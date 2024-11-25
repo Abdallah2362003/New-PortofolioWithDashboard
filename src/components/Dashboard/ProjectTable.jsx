@@ -48,13 +48,13 @@ const ProjectTable = ({ projects, onEdit, onDelete }) => {
                       borderBottom: "1px solid #eee",
                     }}
                   >
-                    <td style={{ border: "1px solid #ccc", padding: "8px" }}>
+                    <td data-label = {"ID"} style={{ border: "1px solid #ccc", padding: "8px" }}>
                       {index + 1}
                     </td>
-                    <td style={{ border: "1px solid #ccc", padding: "8px" }}>
+                    <td data-label ={"Title"} style={{ border: "1px solid #ccc", padding: "8px" }}>
                       {project.title}
                     </td>
-                    <td style={{ border: "1px solid #ccc", padding: "8px" }}>
+                    <td data-label = {"GitHub Link"} style={{ border: "1px solid #ccc", padding: "8px" }}>
                       <a
                         href={project.githubLink}
                         target="_blank"
@@ -63,7 +63,7 @@ const ProjectTable = ({ projects, onEdit, onDelete }) => {
                         GitHub
                       </a>
                     </td>
-                    <td style={{ border: "1px solid #ccc", padding: "8px" }}>
+                    <td data-label = {"Video Link"} style={{ border: "1px solid #ccc", padding: "8px" }}>
                       <a
                         href={project.videoLink}
                         target="_blank"
@@ -72,10 +72,10 @@ const ProjectTable = ({ projects, onEdit, onDelete }) => {
                         Video
                       </a>
                     </td>
-                    <td style={{ border: "1px solid #ccc", padding: "8px" }}>
+                    <td data-label = {"Image Count"} style={{ border: "1px solid #ccc", padding: "8px" }}>
                       {project.images?.length || 0}
                     </td>
-                    <td style={{ border: "1px solid #ccc", padding: "8px" }}>
+                    <td data-label = {"Actions"} style={{ border: "1px solid #ccc", padding: "8px" }}>
                       <button
                         onClick={() => onEdit(project)}
                         style={{ marginRight: "10px", color: "aqua" }}
