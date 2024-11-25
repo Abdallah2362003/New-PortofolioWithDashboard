@@ -1,0 +1,336 @@
+:root{
+  --bg-gradient-onyx: linear-gradient(
+    to bottom right,
+    hsl(240, 1%, 25%) 3%,
+    hsl(0, 0%, 19%) 97%
+  );
+}
+/* Modal overlay to center and handle scroll */
+.dashboard-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Ensure the modal stays on top */
+  overflow: hidden; /* Prevent background scroll */
+}
+
+/* Modal content with scrollable behavior */
+.modal-content {
+  background: #1e1e1f;
+  padding: 25px;
+  border-radius: 10px;
+  width: 90%; /* Responsive modal width */
+  max-width: 800px; /* Maximum width for larger screens */
+  max-height: 90%; /* Prevent the modal from exceeding the viewport */
+  overflow-y: auto; /* Enable vertical scrolling */
+  position: relative;
+}
+
+/* Prevent body scrolling when modal is open */
+body.modal-open {
+  overflow: hidden;
+}
+
+
+body.modal-open {
+  overflow: hidden; /* Disable body scroll */
+}
+
+
+  input, textarea {
+    display: block;
+    width: 100%;
+    background: none;
+    font: message-box;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    border: 1px solid black;
+    padding: 10px 10px;
+    color: white;
+}
+.title{
+    color: #ffc650;
+    font-size: x-large;
+}  
+  .close-modal-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  .Add {
+    font: inherit;
+    background: none;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    color: white;
+}
+.Add:hover{
+    color: #ffc650;
+}
+  .add-project-btn {
+    position: relative;
+    top: -100px;
+    left: 155px;
+  }
+  .add-project-btn img{
+    width: 55%;
+    border-radius: 55px;
+  }
+  .add-project-btn img:hover{
+    box-shadow: 1px 1px 10px 1px #ffc650;
+  }
+  
+  
+  .list{
+    border: 5px solid #ffc650;
+    padding: 10px;
+    margin-top: 20px;
+  }
+  .delete{
+    color: crimson;
+  }
+  .edit{
+    color: aqua;
+  }
+  .li{
+    border: 3px solid lemonchiffon;
+    padding: 5px;
+    margin-bottom: 10px;
+  }
+  .actions{
+    display: flex;
+    flex-direction: column;
+  }
+  .Add-project{
+    position: relative;
+    background: var(--border-gradient-onyx);
+    color: var(--orange-yellow-crayola);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 20px;
+    border-radius: 14px;
+    font-size: var(--fs-6);
+    text-transform: capitalize;
+    box-shadow: var(--shadow-3);
+    z-index: 1;
+    transition: var(--transition-1);
+    margin-top: 25px;
+    margin-bottom: 25px;
+  }
+  .Add-project::before {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    background: var(--bg-gradient-jet);
+    border-radius: inherit;
+    z-index: -1;
+    transition: var(--transition-1);
+  }
+  .Add-project:hover::before {
+    background: var(--bg-gradient-yellow-2);
+  }
+  .Add-project{
+    background: var(--bg-gradient-yellow-1);
+  }
+  .Add-project:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+  .Add-project:disabled:hover {
+    background: var(--border-gradient-onyx);
+  }
+  
+  .Add-project:disabled:hover::before {
+    background: var(--bg-gradient-jet);
+  }
+  .title1{
+    color: white;
+  }
+  th{
+    color:#ffc650 ;
+  }
+  td{
+    color: white;
+  }
+  .password-modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Ensure the modal stays on top */
+    overflow: hidden; /* Prevent background scroll */
+  }
+  .pass-btn{
+    display: flex;
+    justify-content: space-around;
+  }
+ 
+   
+
+
+.submit {
+  background-color: #2EA44F;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  outline: none;
+  padding: 10px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.submit:hover,
+.submit:focus {
+  background-color: rgb(35, 145, 66);
+}
+.cancel {
+  background-color: #E62143;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  outline: none;
+  padding: 10px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.cancel:hover,
+.cancel:focus {
+  background-color: #cc354e;
+}
+
+.loader {
+  width: fit-content;
+  padding-bottom: 5px;
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 30px;
+  overflow: hidden;
+  color: white;
+  text-shadow: 0 0 0 #000,10ch 0 0 #000;
+  background: linear-gradient(#ffffff 0 0) bottom left/0% 3px no-repeat;
+  animation: l14 1.5s infinite;
+}
+.loader:before {
+  content: "Loading...";
+}
+@keyframes l14 {
+    80%  {text-shadow:    0  0 0 #000,10ch 0 0 #000;background-size:100% 3px}
+    100% {text-shadow: -10ch 0 0 #000,0    0 0 #000}
+}
+
+.loader-container {
+  position: fixed; /* اجعل العنصر ثابتًا بالنسبة للشاشة */
+  top: 60%; /* اجعله في منتصف الشاشة عموديًا */
+  left: 60%; /* اجعله في منتصف الشاشة أفقيًا */
+  transform: translate(-50%, -50%); /* اجعل العنصر في منتصف النقطة المحددة */
+  z-index: 9999; /* تأكد من ظهوره فوق باقي العناصر */
+  width: 100vw; /* عرض كامل الشاشة */
+  height: 100vh; /* ارتفاع كامل الشاشة */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader1 {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@media (max-width: 540px){
+  .add-project-btn {
+    position: relative;
+    top: -80px;
+    left: 126px;
+}
+}
+@media (max-width: 430px){
+  .add-project-btn {
+    position: relative;
+    top: -82px;
+    left: 126px;
+}
+}
+@media (max-width: 414px){
+  .add-project-btn {
+    position: relative;
+    top: -82px;
+    left: 125px;
+}
+}
+@media (max-width: 390px) {
+  .add-project-btn {
+      position: relative;
+      top: -80px;
+      left: 115px;
+  }
+}
+@media (max-width: 375px){
+  .add-project-btn {
+    position: relative;
+    top: -83px;
+    left: 110px;
+}
+}
