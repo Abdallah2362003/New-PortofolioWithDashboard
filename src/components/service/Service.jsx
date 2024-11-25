@@ -61,12 +61,6 @@ function Service() {
           </li>
         </ul>
         <br />
-        <button className="form-btn" type="button" aria-label="Download CV">
-          <ion-icon name="paper-plane" style={{ marginRight: "8px" }}></ion-icon>
-          <a href={CV} download style={{ color: "#a19070", textDecoration: "none" }}>
-            Download CV
-          </a>
-        </button>
       </section>
     </article>
   );

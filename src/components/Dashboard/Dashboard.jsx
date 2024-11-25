@@ -12,6 +12,9 @@ import SnackbarAlert from "./SnackbarAlert";
 import ProjectForm from "./ProjectForm";
 import ProjectTable from "./ProjectTable";
 import { DragDropContext } from "react-beautiful-dnd";
+import Resume from "../resume/Resume";
+import AboutEditor from "../about/AboutEditor";
+import ResumeEditor from "../resume/ResumeEditor"
 import "./dash.css";
 
 const Dashboard = () => {
@@ -22,6 +25,7 @@ const Dashboard = () => {
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
   const [snackbarType, setSnackbarType] = useState("success");
+  const [activeSection, setActiveSection] = useState("projects"); // القسم النشط
 
   // جلب المشاريع من Firebase عند التحميل الأول
   useEffect(() => {
@@ -165,41 +169,68 @@ const Dashboard = () => {
     }
   };
 
+  // عرض القسم النشط
+  const renderSection = () => {
+    switch (activeSection) {
+      case "projects":
+        return (
+          <>
+            <h2 className="title">Manage Projects</h2>
+            <ProjectForm
+              onSubmit={handleAddOrUpdateProject}
+              editMode={editMode}
+              setEditMode={setEditMode}
+              projects={projects}
+              editProjectId={editProjectId}
+            />
+            <DragDropContext onDragEnd={handleProjectDragEnd}>
+              <ProjectTable
+                projects={projects}
+                onEdit={(project) => {
+                  setEditMode(true);
+                  setEditProjectId(project.id);
+                }}
+                onDelete={handleDeleteProject}
+              />
+            </DragDropContext>
+          </>
+        );
+      case "resume":
+        return <ResumeEditor />;
+      case "about":
+        return <AboutEditor />;
+      default:
+        return <h2>Select a Section</h2>;
+    }
+  };
+
   return (
     <div>
-      {/* عرض الـ Loader أثناء رفع البيانات */}
-      {loading ? (
-        <div className="loader-container">
-          <div className="loader"></div>
-        </div>
-      ) : (
-        <>
-          <SnackbarAlert
-            open={snackbarOpen}
-            message={snackbarMessage}
-            type={snackbarType}
-            onClose={handleSnackbarClose}
-          />
-          <h2 className="title">Manage Projects</h2>
-          <ProjectForm
-            onSubmit={handleAddOrUpdateProject}
-            editMode={editMode}
-            setEditMode={setEditMode}
-            projects={projects}
-            editProjectId={editProjectId}
-          />
-          <DragDropContext onDragEnd={handleProjectDragEnd}>
-            <ProjectTable
-              projects={projects}
-              onEdit={(project) => {
-                setEditMode(true);
-                setEditProjectId(project.id);
-              }}
-              onDelete={handleDeleteProject}
+      {/* القائمة الجانبية للتنقل */}
+      <div className="navDash">
+        <button onClick={() => setActiveSection("projects")}>Projects</button>
+        <button onClick={() => setActiveSection("resume")}>Resume</button>
+        <button onClick={() => setActiveSection("about")}>About</button>
+      </div>
+
+      {/* عرض القسم النشط */}
+      <div className="main-content-dash">
+        {loading ? (
+          <div className="loader-container">
+            <div className="loader"></div>
+          </div>
+        ) : (
+          <>
+            <SnackbarAlert
+              open={snackbarOpen}
+              message={snackbarMessage}
+              type={snackbarType}
+              onClose={handleSnackbarClose}
             />
-          </DragDropContext>
-        </>
-      )}
+            {renderSection()}
+          </>
+        )}
+      </div>
     </div>
   );
 };

@@ -56,7 +56,6 @@ body.modal-open {
 }
 .title{
     color: #ffc650;
-    font-size: x-large;
 }  
   .close-modal-btn {
     position: absolute;
@@ -183,7 +182,10 @@ body.modal-open {
     justify-content: space-around;
   }
  
-   
+   .flex{
+    display: flex;
+    justify-content: space-around;
+   }
 
 
 .submit {
@@ -300,6 +302,46 @@ body.modal-open {
   }
   
 }
+/* تنسيق الـ Navbar */
+.navDash {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border: 2px solid gold;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+/* أزرار الـ Navbar */
+.navDash button {
+  color: white; /* لون النص */
+  border: 1px solid gold; /* إزالة الحواف الافتراضية */
+  border-radius: 5px; /* زوايا مستديرة */
+  padding: 5px; /* مساحة داخلية */
+  font-size: 16px; /* حجم النص */
+  cursor: pointer; /* مؤشر اليد عند التمرير */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* تأثير عند التفاعل */
+}
+
+/* التأثير عند التمرير فوق الأزرار */
+.navDash button:hover {
+  transform: scale(1.1); /* تكبير الزر قليلاً */
+}
+
+/* التأثير عند النقر */
+.navDash button:active {
+  transform: scale(0.95); /* تصغير الزر قليلاً */
+}
+
+/* الزر النشط */
+.navDash button.active {
+  font-weight: bold; /* خط عريض */
+}
+
+
+
 /* Table styles for larger screens */
 .projects-table {
   width: 100%;
@@ -322,6 +364,98 @@ body.modal-open {
 .projects-table tr:nth-child(even) {
   background-color: #f9f9f9;
 }
+/* Resume */
+/* Base styles for ResumeTable */
+.resume-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.resume-table th,
+.resume-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.resume-table th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+.resume-table input,
+.resume-table textarea {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+  .resume-table {
+    border: 0;
+  }
+
+  .resume-table thead {
+    display: none;
+  }
+
+  .resume-table tr {
+    margin-bottom: 10px;
+    display: block;
+    border-bottom: 2px solid #ddd;
+  }
+
+  .resume-table td {
+    display: block;
+    text-align: right;
+    font-size: 14px;
+    border-bottom: 1px solid #ddd;
+    position: relative;
+    padding-left: 50%;
+  }
+
+  .resume-table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 10px;
+    width: calc(50% - 20px);
+    font-weight: bold;
+    text-align: left;
+  }
+
+  .resume-table td:last-child {
+    border-bottom: 0;
+  }
+}
+
+/* Buttons */
+.add-btn,
+.delete-btn,
+.save-btn {
+  background-color: #3498db;
+  color: white;
+  padding: 10px 15px;
+  margin: 5px 0;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.delete-btn {
+  background-color: #e74c3c;
+}
+
+.delete-btn:hover {
+  background-color: #c0392b;
+}
+
+.save-btn {
+  margin-top: 20px;
+}
+
 
 /* Responsive Table for smaller screens */
 @media (max-width: 768px) {

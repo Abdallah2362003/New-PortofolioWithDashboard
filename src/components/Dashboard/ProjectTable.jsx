@@ -23,7 +23,7 @@ const ProjectTable = ({ projects, onEdit, onDelete }) => {
                 Video Link
               </th>
               <th style={{ border: "1px solid #ccc", padding: "8px" }}>
-                Images
+                Images Count
               </th>
               <th style={{ border: "1px solid #ccc", padding: "8px" }}>
                 Actions

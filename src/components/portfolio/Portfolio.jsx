@@ -78,7 +78,9 @@ function Portfolio() {
       <article className="portfolio active" data-page="portfolio">
         <header>
           <h2 className="h2 article-title">Portfolio</h2>
-          <button onClick={toggleDashboard} className="add-project-btn">
+          <button onClick={toggleDashboard} className="add-project-btn" style={{
+            display: 'none'
+          }}>
             <img src={addIcon} alt="Add Icon" />
           </button>
         </header>
