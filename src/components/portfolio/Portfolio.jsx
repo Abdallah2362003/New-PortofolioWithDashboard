@@ -14,6 +14,16 @@ function Portfolio() {
   const [showPasswordModal, setShowPasswordModal] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(true);
+  const [activeIframe, setActiveIframe] = useState(null); // إضافة حالة ل iframe
+
+   // دالة showIframe لتغيير حالة activeIframe
+   const showIframe = (iframeId) => {
+    setActiveIframe(iframeId);
+  };
+
+  const hideIframe = () => {
+    setActiveIframe(null);
+  };
 
   const changeSlide = (projectIndex, direction) => {
     setActiveSlide((prev) => {
@@ -99,6 +109,9 @@ function Portfolio() {
                   index={index}
                   activeSlide={activeSlide}
                   changeSlide={changeSlide}
+                  showIframe={showIframe} // تمرير دالة showIframe
+                  hideIframe={hideIframe} // تمرير دالة hideIframe
+                  activeIframe={activeIframe} // تمرير قيمة activeIframe
                 />
               ))}
             </ul>
