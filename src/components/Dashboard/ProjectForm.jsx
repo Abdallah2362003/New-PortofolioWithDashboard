@@ -17,6 +17,7 @@ const ProjectForm = ({
   });
 
   const [selectedFiles, setSelectedFiles] = useState([]);
+  const [errors, setErrors] = useState({}); // لتخزين الأخطاء
 
   // تحميل المشروع في وضع التعديل
   useEffect(() => {
@@ -40,10 +41,49 @@ const ProjectForm = ({
   };
 
   const handleAddOrUpdate = () => {
+    // التحقق من المدخلات قبل الإرسال
+    const validationErrors = validateForm();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return; // لا يتم الإرسال إذا كان هناك أخطاء
+    }
+
     onSubmit({ ...newProject, images: selectedFiles }, editMode);
     setNewProject({ title: "", githubLink: "", videoLink: "", images: [] });
     setSelectedFiles([]);
     setEditMode(false);
+    setErrors({}); // مسح الأخطاء بعد الإرسال
+  };
+
+  // التحقق من المدخلات
+  const validateForm = () => {
+    const errors = {};
+
+    // التحقق من العنوان
+    if (!newProject.title) {
+      errors.title = "Title is required.";
+    }
+
+    // التحقق من رابط GitHub
+    if (!newProject.githubLink) {
+      errors.githubLink = "GitHub link is required.";
+    } else if (!/^https?:\/\/[^\s]+$/.test(newProject.githubLink)) {
+      errors.githubLink = "Please enter a valid GitHub link.";
+    }
+
+    // التحقق من رابط الفيديو
+    if (!newProject.videoLink) {
+      errors.videoLink = "Video link is required.";
+    } else if (!/^https?:\/\/[^\s]+$/.test(newProject.videoLink)) {
+      errors.videoLink = "Please enter a valid video link.";
+    }
+
+    // التحقق من وجود الصور
+    if (selectedFiles.length === 0) {
+      errors.images = "At least one image is required.";
+    }
+
+    return errors;
   };
 
   // منطقة السحب والإفلات
@@ -61,28 +101,42 @@ const ProjectForm = ({
   return (
     <div>
       <h3 className="title1">{editMode ? "Edit Project" : "Add Project"}</h3>
+      
+      {/* عنوان المشروع */}
       <input
         type="text"
         name="title"
         placeholder="Project Title"
         value={newProject.title}
         onChange={handleInputChange}
+        className={errors.title ? "input-error" : ""}
       />
+      {errors.title && <p className="error-text">{errors.title}</p>}
+      
+      {/* رابط GitHub */}
       <input
         type="url"
         name="githubLink"
         placeholder="GitHub Link"
         value={newProject.githubLink}
         onChange={handleInputChange}
+        className={errors.githubLink ? "input-error" : ""}
       />
+      {errors.githubLink && <p className="error-text">{errors.githubLink}</p>}
+
+      {/* رابط الفيديو */}
       <input
         type="url"
         name="videoLink"
         placeholder="Video Link"
         value={newProject.videoLink}
         onChange={handleInputChange}
+        className={errors.videoLink ? "input-error" : ""}
       />
+      {errors.videoLink && <p className="error-text">{errors.videoLink}</p>}
+      
       <h3 className="title1">Add Images Here</h3>
+      
       {/* منطقة السحب والإفلات */}
       <div
         {...getRootProps()}
@@ -98,12 +152,13 @@ const ProjectForm = ({
         <input {...getInputProps()} />
         <p>Drag and drop your images here, or click to select files</p>
       </div>
-      <h2 className="title">Image Slider</h2>
+
       {/* عرض الصور المرفوعة */}
       <ImageManager
         selectedFiles={selectedFiles}
         setSelectedFiles={setSelectedFiles}
       />
+      {errors.images && <p className="error-text">{errors.images}</p>}
 
       <button className="Add-project" onClick={handleAddOrUpdate}>
         {editMode ? "Save Changes" : "Add Project"}

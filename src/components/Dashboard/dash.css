@@ -455,7 +455,9 @@ body.modal-open {
 .save-btn {
   margin-top: 20px;
 }
-
+.error-text{
+  color: red !important;
+}
 
 /* Responsive Table for smaller screens */
 @media (max-width: 768px) {
