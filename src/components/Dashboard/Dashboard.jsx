@@ -12,7 +12,7 @@ import SnackbarAlert from "./SnackbarAlert";
 import ProjectForm from "./ProjectForm";
 import ProjectTable from "./ProjectTable";
 import { DragDropContext } from "react-beautiful-dnd";
-import Resume from "../resume/Resume";
+// import Resume from "../resume/Resume";
 import AboutEditor from "../about/AboutEditor";
 import ResumeEditor from "../resume/ResumeEditor"
 import "./dash.css";
